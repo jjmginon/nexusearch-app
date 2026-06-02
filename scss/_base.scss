@@ -1,0 +1,151 @@
+// ============================================================
+// _base.scss — NexuSearch // SYSTEM TOKENS
+// ============================================================
+
+// --- Typography ---
+$font-display: "Rajdhani", "Orbitron", sans-serif;
+$font-body: "Inter", "Share Tech Mono", monospace;
+$font-mono: "Share Tech Mono", "Courier New", monospace;
+
+// --- Color Palette: Cold Tech ---
+$color-void: #060810; // deepest background
+$color-deep: #0a0d14; // panel background
+$color-surface: #0e1219; // card / input bg
+$color-surface-alt: #131720; // hover surface
+$color-border: #1e2535; // default border
+$color-border-lit: #2a3550; // active/hover border
+
+$color-text-primary: #d4e4f7; // primary text — cool white-blue
+$color-text-secondary: #6a85a8; // secondary — muted steel
+$color-text-muted: #2e3f58; // very muted
+
+$color-cyan: #00c8ff; // primary accent
+$color-cyan-dim: #0078a8; // dimmed accent
+$color-cyan-faint: #00c8ff0d; // tinted bg
+$color-cyan-glow: #00c8ff22; // glow bg
+
+$color-link: #00c8ff;
+$color-link-visited: #3a8cb5;
+$color-link-hover: #7adeff;
+
+// --- Scanline / noise overlay ---
+$scanline-color: rgba(0, 200, 255, 0.025);
+
+// --- Spacing ---
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 40px;
+$spacing-2xl: 72px;
+
+// --- Breakpoints ---
+$bp-sm: 480px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+
+// --- Mixins ---
+@mixin mq($bp) {
+  @media only screen and (min-width: $bp) {
+    @content;
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+// Corner-cut clip — Warframe-style diagonal geometry
+@mixin corner-cut($size: 10px) {
+  clip-path: polygon(
+    $size 0%,
+    100% 0%,
+    100% calc(100% - $size),
+    calc(100% - $size) 100%,
+    0% 100%,
+    0% $size
+  );
+}
+
+// ============================================================
+// Reset & Base Styles
+// ============================================================
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+  font-family: $font-body;
+  font-size: 16px;
+  color: $color-text-primary;
+  background-color: $color-void;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+// Subtle grid overlay on body
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 200, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 200, 255, 0.018) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: $color-link;
+  text-decoration: none;
+
+  &:visited {
+    color: $color-link-visited;
+  }
+  &:hover {
+    color: $color-link-hover;
+  }
+}
+
+button {
+  font-family: $font-body;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

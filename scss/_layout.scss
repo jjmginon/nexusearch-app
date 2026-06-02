@@ -1,0 +1,12 @@
+// ============================================================
+// _layout.scss — Page scaffold
+// ============================================================
+@use "base" as *;
+
+.page {
+  position: relative;
+  z-index: 1;
+  @include flex-column;
+  align-items: center;
+  min-height: 100vh;
+}

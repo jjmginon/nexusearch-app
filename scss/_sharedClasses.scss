@@ -1,0 +1,48 @@
+@use "_base" as *;
+
+.blue {
+  color: $logo-blue;
+}
+
+.red {
+  color: $logo-red;
+}
+
+.yellow {
+  color: $logo-yellow;
+}
+
+.green {
+  color: $logo-green;
+}
+
+.none {
+  display: none;
+}
+
+.flex {
+  display: flex;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.exclaim {
+  display: inline-block;
+  font-size: 2.5rem;
+  transform: rotate(12deg);
+
+  @include mq(768px) {
+    font-size: 5rem;
+  }
+}

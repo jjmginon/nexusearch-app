@@ -1,0 +1,224 @@
+// ============================================================
+// _search-entry.scss — Wordmark, tagline, search bar
+// ============================================================
+@use "base" as *;
+
+// ---- Section ----
+.search-entry {
+  @include flex-column;
+  align-items: center;
+  width: 100%;
+  padding: $spacing-2xl $spacing-md $spacing-xl;
+
+  @include mq($bp-md) {
+    padding: 96px $spacing-lg $spacing-xl;
+  }
+}
+
+// ---- Wordmark ----
+.wordmark {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  margin-bottom: $spacing-sm;
+  font-family: $font-display;
+  font-size: 3.6rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  user-select: none;
+  line-height: 1;
+
+  @include mq($bp-md) {
+    font-size: 6.5rem;
+    letter-spacing: 0.12em;
+  }
+}
+
+.wordmark__nexu {
+  color: $color-text-primary;
+}
+
+.wordmark__search {
+  color: $color-cyan;
+  // slight text-shadow glow on the accent word
+  text-shadow:
+    0 0 20px rgba(0, 200, 255, 0.5),
+    0 0 60px rgba(0, 200, 255, 0.15);
+}
+
+// Decorative bracket lines flanking wordmark
+.wordmark::before,
+.wordmark::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+}
+
+.wordmark::before {
+  left: 0;
+  background: linear-gradient(90deg, $color-cyan 0%, $color-border 80%);
+}
+
+.wordmark::after {
+  right: 0;
+  background: linear-gradient(270deg, $color-cyan-dim 0%, transparent 80%);
+  bottom: -8px;
+  opacity: 0.4;
+}
+
+// ---- Tagline ----
+.search-entry__tagline {
+  margin-top: $spacing-md;
+  margin-bottom: $spacing-xl;
+  font-family: $font-mono;
+  font-size: 0.68rem;
+  font-weight: 400;
+  color: $color-text-muted;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  @include mq($bp-md) {
+    font-size: 0.78rem;
+    margin-bottom: 48px;
+  }
+}
+
+// ---- Search Bar ----
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 94vw;
+  max-width: 700px;
+  background-color: $color-surface;
+  border: 1px solid $color-border-lit;
+  // top-right corner cut — key Warframe detail
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  @include mq($bp-md) {
+    width: 68vw;
+    clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 0 100%);
+  }
+
+  @include mq($bp-lg) {
+    width: 52vw;
+  }
+
+  &:hover,
+  &:focus-within {
+    border-color: $color-cyan-dim;
+    box-shadow:
+      0 0 0 1px $color-cyan-faint,
+      0 0 24px $color-cyan-faint;
+  }
+}
+
+// Thin cyan top-left accent line
+.search-bar::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 40%;
+  height: 1px;
+  background: linear-gradient(90deg, $color-cyan, transparent);
+  pointer-events: none;
+}
+
+.search-bar__input {
+  flex: 1;
+  min-width: 0;
+  padding: 14px $spacing-md;
+  font-family: $font-mono;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: $color-text-primary;
+  background: transparent;
+  border: none;
+  outline: none;
+  letter-spacing: 0.06em;
+
+  @include mq($bp-md) {
+    padding: 20px $spacing-lg;
+    font-size: 0.95rem;
+  }
+
+  &::placeholder {
+    color: $color-text-muted;
+    letter-spacing: 0.06em;
+  }
+
+  // blinking cursor style
+  caret-color: $color-cyan;
+}
+
+.search-bar__clear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 $spacing-sm;
+  color: $color-text-muted;
+  transition: color 0.15s ease;
+
+  @include mq($bp-md) {
+    padding: 0 $spacing-md;
+  }
+
+  &:hover {
+    color: $color-cyan;
+  }
+
+  &--hidden {
+    display: none;
+  }
+}
+
+.search-bar__submit {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: 10px $spacing-md;
+  margin: 5px;
+  font-family: $font-display;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: $color-void;
+  background-color: $color-cyan;
+  // matching corner cut on button
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+  transition: background-color 0.15s ease;
+
+  @include mq($bp-md) {
+    padding: 13px $spacing-lg;
+    margin: 6px;
+    font-size: 0.8rem;
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    background-color: $color-link-hover;
+  }
+
+  &:focus {
+    outline: 2px solid $color-cyan;
+    outline-offset: 3px;
+  }
+
+  span {
+    display: none;
+    @include mq($bp-sm) {
+      display: inline;
+    }
+  }
+}

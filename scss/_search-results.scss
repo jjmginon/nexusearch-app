@@ -1,0 +1,188 @@
+// ============================================================
+// _search-results.scss — Stats bar + result items
+// ============================================================
+@use "base" as *;
+
+.results {
+  @include flex-column;
+  width: 94vw;
+  max-width: 700px;
+  padding: 0 0 $spacing-2xl;
+
+  @include mq($bp-md) {
+    width: 68vw;
+  }
+  @include mq($bp-lg) {
+    width: 52vw;
+  }
+}
+
+// ---- Stats bar ----
+.results__stats-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-sm 0 $spacing-md;
+  margin-bottom: $spacing-md;
+  border-bottom: 1px solid $color-border;
+
+  // decorative leading bracket
+  &::before {
+    content: "//";
+    font-family: $font-mono;
+    font-size: 0.65rem;
+    color: $color-cyan-dim;
+    letter-spacing: 0.1em;
+  }
+}
+
+.results__stats {
+  font-family: $font-mono;
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: $color-text-muted;
+}
+
+// ---- Result list ----
+.results__list {
+  width: 100%;
+}
+
+// ---- Individual result ----
+.result-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: $spacing-lg $spacing-md $spacing-lg 20px;
+  border-bottom: 1px solid $color-border;
+  transition: background-color 0.18s ease;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  // left accent line — hidden by default
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    bottom: 12px;
+    width: 2px;
+    background: linear-gradient(180deg, $color-cyan, $color-cyan-dim);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  // index counter in top-right
+  &::after {
+    content: attr(data-index);
+    position: absolute;
+    top: $spacing-lg;
+    right: 0;
+    font-family: $font-mono;
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    color: $color-text-muted;
+    opacity: 0.5;
+  }
+
+  &:hover {
+    background-color: $color-surface;
+
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+// ---- Title ----
+.result-item__title {
+  width: 100%;
+  margin-bottom: $spacing-sm;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  a {
+    font-family: $font-display;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $color-text-primary;
+    text-decoration: none;
+    transition: color 0.15s ease;
+
+    @include mq($bp-md) {
+      font-size: 1.2rem;
+    }
+
+    &:visited {
+      color: $color-text-secondary;
+    }
+
+    &:hover {
+      color: $color-cyan;
+      text-shadow: 0 0 12px rgba(0, 200, 255, 0.35);
+    }
+
+    &:focus {
+      outline: 1px solid $color-cyan;
+      outline-offset: 3px;
+    }
+  }
+}
+
+// ---- Body (image + text) ----
+.result-item__body {
+  display: flex;
+  gap: $spacing-md;
+  align-items: flex-start;
+}
+
+// ---- Thumbnail ----
+.result-item__image {
+  flex-shrink: 0;
+
+  img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    // corner cut on image too
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+    border: 1px solid $color-border-lit;
+    filter: brightness(0.75) saturate(0.6) hue-rotate(180deg);
+    transition: filter 0.2s ease;
+
+    @include mq($bp-md) {
+      width: 76px;
+      height: 76px;
+    }
+  }
+
+  .result-item:hover & img {
+    filter: brightness(0.9) saturate(0.5);
+  }
+}
+
+// ---- Excerpt ----
+.result-item__excerpt {
+  flex: 1;
+  font-family: $font-body;
+  font-size: 0.8rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: $color-text-secondary;
+  overflow: hidden;
+  display: -webkit-box;
+  /* -webkit-line-clamp: 3; */
+  -webkit-box-orient: vertical;
+
+  @include mq($bp-md) {
+    font-size: 0.85rem;
+  }
+}
