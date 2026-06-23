@@ -19,7 +19,7 @@ This site highlights how a simple search interface can be elevated into a profes
 ## 📂 File Structure
 
 ```
-NexuSearch/
+nexusearch-app/
 │
 ├── index.html              # Main search interface
 │
@@ -37,12 +37,11 @@ NexuSearch/
 │   ├── footer.min.css
 │   └── footer.min.css.map
 │
-├── js/                     # JavaScript modules
-│   ├── main.js             # App initialization & orchestration
-│   ├── dataFunctions.js    # API requests & parsing
-│   ├── searchBar.js        # Input handling & clear button
-│   └── searchResults.js    # Result rendering & stats
-└── favicon.ico             # Site icon
+└── js/                     # JavaScript modules
+    ├── main.js             # App initialization & orchestration
+    ├── dataFunctions.js    # API requests & parsing
+    ├── searchBar.js        # Input handling & clear button
+    └── searchResults.js    # Result rendering & stats
 ```
 
 ---
