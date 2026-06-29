@@ -1,9 +1,8 @@
-// ============================================================
-// _search-entry.scss — Wordmark, tagline, search bar
-// ============================================================
+/* || SEARCH ENTRY STYLES */
+
 @use "base" as *;
 
-// ---- Section ----
+/* Section */
 .search-entry {
   @include flex-column;
   align-items: center;
@@ -15,7 +14,7 @@
   }
 }
 
-// ---- Wordmark ----
+/* Wordmark */
 .wordmark {
   position: relative;
   display: flex;
@@ -47,7 +46,6 @@
     0 0 60px rgba(0, 200, 255, 0.15);
 }
 
-// Decorative bracket lines flanking wordmark
 .wordmark::before,
 .wordmark::after {
   content: "";
@@ -69,7 +67,7 @@
   opacity: 0.4;
 }
 
-// ---- Tagline ----
+/* Tagline */
 .search-entry__tagline {
   margin-top: $spacing-md;
   margin-bottom: $spacing-xl;
@@ -86,7 +84,7 @@
   }
 }
 
-// ---- Search Bar ----
+/* Search Bar */
 .search-bar {
   position: relative;
   display: flex;
@@ -119,7 +117,6 @@
   }
 }
 
-// Thin cyan top-left accent line
 .search-bar::before {
   content: "";
   position: absolute;
@@ -154,7 +151,6 @@
     letter-spacing: 0.06em;
   }
 
-  // blinking cursor style
   caret-color: $color-cyan;
 }
 
@@ -192,7 +188,6 @@
   text-transform: uppercase;
   color: $color-void;
   background-color: $color-cyan;
-  // matching corner cut on button
   clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
   transition: background-color 0.15s ease;
 

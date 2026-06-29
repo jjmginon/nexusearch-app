@@ -1,6 +1,5 @@
-// ============================================================
-// _search-results.scss — Stats bar + result items
-// ============================================================
+/* || SEARCH RESULTS */
+
 @use "base" as *;
 
 .results {
@@ -17,7 +16,7 @@
   }
 }
 
-// ---- Stats bar ----
+/* Stats bar */
 .results__stats-bar {
   width: 100%;
   display: flex;
@@ -27,7 +26,6 @@
   margin-bottom: $spacing-md;
   border-bottom: 1px solid $color-border;
 
-  // decorative leading bracket
   &::before {
     content: "//";
     font-family: $font-mono;
@@ -45,12 +43,12 @@
   color: $color-text-muted;
 }
 
-// ---- Result list ----
+/* Result list */
 .results__list {
   width: 100%;
 }
 
-// ---- Individual result ----
+/* Individual result */
 .result-item {
   position: relative;
   display: flex;
@@ -64,7 +62,6 @@
     border-bottom: none;
   }
 
-  // left accent line — hidden by default
   &::before {
     content: "";
     position: absolute;
@@ -77,7 +74,6 @@
     transition: opacity 0.2s ease;
   }
 
-  // index counter in top-right
   &::after {
     content: attr(data-index);
     position: absolute;
@@ -99,7 +95,7 @@
   }
 }
 
-// ---- Title ----
+/* Title */
 .result-item__title {
   width: 100%;
   margin-bottom: $spacing-sm;
@@ -137,14 +133,15 @@
   }
 }
 
-// ---- Body (image + text) ----
+/* Body */
+// image + text
 .result-item__body {
   display: flex;
   gap: $spacing-md;
   align-items: flex-start;
 }
 
-// ---- Thumbnail ----
+/* Thumbnail */
 .result-item__image {
   flex-shrink: 0;
 
@@ -152,7 +149,6 @@
     width: 60px;
     height: 60px;
     object-fit: cover;
-    // corner cut on image too
     clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
     border: 1px solid $color-border-lit;
     filter: brightness(0.75) saturate(0.6) hue-rotate(180deg);
@@ -169,7 +165,7 @@
   }
 }
 
-// ---- Excerpt ----
+/* Excerpt */
 .result-item__excerpt {
   flex: 1;
   font-family: $font-body;

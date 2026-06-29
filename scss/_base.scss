@@ -1,37 +1,35 @@
-// ============================================================
-// _base.scss — NexuSearch // SYSTEM TOKENS
-// ============================================================
+/* || BASE STYLES */
 
-// --- Typography ---
+/* Typography */
 $font-display: "Rajdhani", "Orbitron", sans-serif;
 $font-body: "Inter", "Share Tech Mono", monospace;
 $font-mono: "Share Tech Mono", "Courier New", monospace;
 
-// --- Color Palette: Cold Tech ---
-$color-void: #060810; // deepest background
-$color-deep: #0a0d14; // panel background
-$color-surface: #0e1219; // card / input bg
-$color-surface-alt: #131720; // hover surface
-$color-border: #1e2535; // default border
-$color-border-lit: #2a3550; // active/hover border
+/* Color Palette */
+$color-void: #060810;
+$color-deep: #0a0d14;
+$color-surface: #0e1219;
+$color-surface-alt: #131720;
+$color-border: #1e2535;
+$color-border-lit: #2a3550;
 
-$color-text-primary: #d4e4f7; // primary text — cool white-blue
-$color-text-secondary: #6a85a8; // secondary — muted steel
-$color-text-muted: #2e3f58; // very muted
+$color-text-primary: #d4e4f7;
+$color-text-secondary: #6a85a8;
+$color-text-muted: #2e3f58;
 
-$color-cyan: #00c8ff; // primary accent
-$color-cyan-dim: #0078a8; // dimmed accent
-$color-cyan-faint: #00c8ff0d; // tinted bg
-$color-cyan-glow: #00c8ff22; // glow bg
+$color-cyan: #00c8ff;
+$color-cyan-dim: #0078a8;
+$color-cyan-faint: #00c8ff0d;
+$color-cyan-glow: #00c8ff22;
 
 $color-link: #00c8ff;
 $color-link-visited: #3a8cb5;
 $color-link-hover: #7adeff;
 
-// --- Scanline / noise overlay ---
+/* Scanline / noise overlay  */
 $scanline-color: rgba(0, 200, 255, 0.025);
 
-// --- Spacing ---
+/* Spacing */
 $spacing-xs: 4px;
 $spacing-sm: 8px;
 $spacing-md: 16px;
@@ -39,13 +37,13 @@ $spacing-lg: 24px;
 $spacing-xl: 40px;
 $spacing-2xl: 72px;
 
-// --- Breakpoints ---
+/* Breakpoints */
 $bp-sm: 480px;
 $bp-md: 768px;
 $bp-lg: 1024px;
 $bp-xl: 1280px;
 
-// --- Mixins ---
+/* Mixins */
 @mixin mq($bp) {
   @media only screen and (min-width: $bp) {
     @content;
@@ -64,7 +62,6 @@ $bp-xl: 1280px;
   align-items: flex-start;
 }
 
-// Corner-cut clip — Warframe-style diagonal geometry
 @mixin corner-cut($size: 10px) {
   clip-path: polygon(
     $size 0%,
@@ -76,10 +73,7 @@ $bp-xl: 1280px;
   );
 }
 
-// ============================================================
-// Reset & Base Styles
-// ============================================================
-
+/* Reset */
 *,
 *::before,
 *::after {
@@ -87,6 +81,8 @@ $bp-xl: 1280px;
   margin: 0;
   padding: 0;
 }
+
+/* Base Styles */
 
 html,
 body {
@@ -100,7 +96,6 @@ body {
   overflow-x: hidden;
 }
 
-// Subtle grid overlay on body
 body::before {
   content: "";
   position: fixed;
