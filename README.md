@@ -33,9 +33,7 @@ nexusearch-app/
 │
 ├── dist/css/               # Compiled & minified CSS
 │   ├── style.min.css
-│   ├── style.min.css.map
-│   ├── footer.min.css
-│   └── footer.min.css.map
+│   └── style.min.css.map
 │
 └── js/                     # JavaScript modules
     ├── main.js             # App initialization & orchestration
