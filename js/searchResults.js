@@ -1,3 +1,5 @@
+// --- SEARCH RESULTS MODULE --- //
+
 export const removeAllResults = () => {
     const resultsList = document.getElementById("results-list");
     while (resultsList.lastElementChild) {

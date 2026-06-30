@@ -1,3 +1,5 @@
+// --- DATA FUNCTIONS MODULE --- //
+
 export const getSearchTerm = () => {
     const rawTerm = document.getElementById("search-input").value.trim();
     const normalized = rawTerm.replace(/[ ]{2,}/gi, " ");

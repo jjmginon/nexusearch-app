@@ -1,3 +1,5 @@
+// --- SEARCH BAR MODULE --- //
+
 export const setSearchFocus = () => {
     document.getElementById("search-input").focus();
 };

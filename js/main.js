@@ -1,3 +1,5 @@
+// --- MAIN JS ENTRY POINT --- //
+
 import { setSearchFocus, handleSearchInput, clearSearchText, clearKeyListener } from "./searchBar.js";
 import { removeAllResults, buildResultItems, clearStatsText, updateStatsText } from "./searchResults.js";
 import { getSearchTerm, fetchSearchResults } from "./dataFunctions.js";
@@ -7,6 +9,8 @@ document.addEventListener("readystatechange", (event) => {
         initApp();
     }
 });
+
+/* Initialize App */
 
 const initApp = () => {
     setSearchFocus();
