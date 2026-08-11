@@ -23,6 +23,8 @@ nexusearch-app/
 │
 ├── index.html              # Main search interface
 │
+├── favicon/                # Favicon and PWA assets
+│
 ├── scss/                   # SCSS source files
 │   ├── style.scss          # Main entry point
 │   ├── _base.scss          # System tokens, reset, mixins
@@ -31,9 +33,10 @@ nexusearch-app/
 │   ├── _search-results.scss# Stats bar + result items
 │   └── _footer.scss        # Footer styles
 │
-├── dist/css/               # Compiled & minified CSS
-│   ├── style.min.css
-│   └── style.min.css.map
+├── dist/
+│   └── css/
+│       ├── style.min.css
+│       └── style.min.css.map
 │
 └── js/                     # JavaScript modules
     ├── main.js             # App initialization & orchestration
