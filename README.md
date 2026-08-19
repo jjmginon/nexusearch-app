@@ -1,5 +1,7 @@
 # NexuSearch 🔍⚡
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/784b62c3-f520-40ca-a5ab-2e054af9b9bf/deploy-status)](https://app.netlify.com/projects/nexusearch-app/deploys)
+
 NexuSearch is a front‑end web application built in 2026 to explore open knowledge through a sleek, accessibility‑first interface. Designed with a cold‑tech aesthetic and performance‑optimized architecture, the project demonstrates how semantic HTML, modular SCSS, and modern JavaScript can converge into a polished showcase of search intelligence.
 
 ---
