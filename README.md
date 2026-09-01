@@ -4,6 +4,8 @@
 
 NexuSearch is a front‑end web application built in 2026 to explore open knowledge through a sleek, accessibility‑first interface. Designed with a cold‑tech aesthetic and performance‑optimized architecture, the project demonstrates how semantic HTML, modular SCSS, and modern JavaScript can converge into a polished showcase of search intelligence.
 
+**Live Demo:** [nexusearch-app.netlify.app](https://nexusearch-app.netlify.app/)
+
 ---
 
 ## 🌐 Project Overview
@@ -69,7 +71,7 @@ nexusearch-app/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/NexuSearch.git
+   git clone https://github.com/jjmginon/nexusearch-app.git
    ```
 2. Navigate into the project folder:
    ```bash
