@@ -17,8 +17,20 @@ export const fetchSearchResults = async (searchTerm) => {
 
 const buildApiUrl = (searchTerm) => {
     const maxChars = getExcerptLength();
-    const raw = `https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${searchTerm}&gsrlimit=20&prop=pageimages|extracts&exchars=${maxChars}&exintro&explaintext&exlimit=max&format=json&origin=*`;
-    return encodeURI(raw);
+    const params = new URLSearchParams({
+        action: "query",
+        generator: "search",
+        gsrsearch: searchTerm,
+        gsrlimit: "20",
+        prop: "pageimages|extracts",
+        exchars: String(maxChars),
+        exintro: "1",
+        explaintext: "1",
+        exlimit: "max",
+        format: "json",
+        origin: "*",
+    });
+    return `https://en.wikipedia.org/w/api.php?${params.toString()}`;
 };
 
 const getExcerptLength = () => {
