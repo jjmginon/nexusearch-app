@@ -75,3 +75,7 @@ export const updateStatsText = (resultCount) => {
         el.textContent = "No records found";
     }
 };
+
+export const showErrorText = () => {
+    document.getElementById("results-stats").textContent = "Connection failed — try again";
+};

@@ -9,6 +9,7 @@ export const getSearchTerm = () => {
 export const fetchSearchResults = async (searchTerm) => {
     const apiUrl = buildApiUrl(searchTerm);
     const rawData = await requestData(apiUrl);
+    if (rawData === null) return null;
     if (rawData?.query) {
         return parseWikiResults(rawData.query.pages);
     }
@@ -43,6 +44,7 @@ const getExcerptLength = () => {
 const requestData = async (url) => {
     try {
         const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
         return await response.json();
     } catch (error) {
         console.error("NexuSearch fetch error:", error);
