@@ -1,7 +1,7 @@
 // --- MAIN JS ENTRY POINT --- //
 
 import { setSearchFocus, handleSearchInput, clearSearchText, clearKeyListener } from "./searchBar.js";
-import { removeAllResults, buildResultItems, clearStatsText, updateStatsText, showErrorText } from "./searchResults.js";
+import { removeAllResults, buildResultItems, clearStatsText, updateStatsText, showErrorText, showEmptySearchText } from "./searchResults.js";
 import { getSearchTerm, fetchSearchResults } from "./dataFunctions.js";
 
 document.addEventListener("readystatechange", (event) => {
@@ -36,7 +36,10 @@ const onSearchSubmit = (event) => {
 const runSearch = async () => {
     clearStatsText();
     const searchTerm = getSearchTerm();
-    if (searchTerm === "") return;
+    if (searchTerm === "") {
+        showEmptySearchText();
+        return;
+    }
     const results = await fetchSearchResults(searchTerm);
     if (results === null) {
         showErrorText();

@@ -79,3 +79,7 @@ export const updateStatsText = (resultCount) => {
 export const showErrorText = () => {
     document.getElementById("results-stats").textContent = "Connection failed — try again";
 };
+
+export const showEmptySearchText = () => {
+    document.getElementById("results-stats").textContent = "Enter a search term";
+};
