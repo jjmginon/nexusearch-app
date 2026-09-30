@@ -1,6 +1,6 @@
 // --- MAIN JS ENTRY POINT --- //
 
-import { setSearchFocus, handleSearchInput, clearSearchText, clearKeyListener } from "./searchBar.js";
+import { setSearchFocus, handleSearchInput, clearSearchText, clearKeyListener, handleSearchKeydown } from "./searchBar.js";
 import { removeAllResults, buildResultItems, clearStatsText, updateStatsText, showErrorText, showEmptySearchText } from "./searchResults.js";
 import { getSearchTerm, fetchSearchResults } from "./dataFunctions.js";
 
@@ -17,6 +17,7 @@ const initApp = () => {
 
     const searchInput = document.getElementById("search-input");
     searchInput.addEventListener("input", handleSearchInput);
+    searchInput.addEventListener("keydown", handleSearchKeydown);
 
     const clearBtn = document.getElementById("search-clear");
     clearBtn.addEventListener("click", clearSearchText);

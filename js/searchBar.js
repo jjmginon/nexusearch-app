@@ -27,3 +27,9 @@ export const clearKeyListener = (event) => {
         document.getElementById("search-clear").click();
     }
 };
+
+export const handleSearchKeydown = (event) => {
+    if (event.key === "Escape") {
+        document.getElementById("search-clear").click();
+    }
+};
