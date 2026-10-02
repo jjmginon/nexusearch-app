@@ -76,6 +76,10 @@ export const updateStatsText = (resultCount) => {
     }
 };
 
+export const showLoadingText = () => {
+    document.getElementById("results-stats").textContent = "Searching...";
+};
+
 export const showErrorText = () => {
     document.getElementById("results-stats").textContent = "Connection failed — try again";
 };

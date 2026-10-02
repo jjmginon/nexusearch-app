@@ -1,7 +1,7 @@
 // --- MAIN JS ENTRY POINT --- //
 
 import { setSearchFocus, handleSearchInput, clearSearchText, clearKeyListener, handleSearchKeydown } from "./searchBar.js";
-import { removeAllResults, buildResultItems, clearStatsText, updateStatsText, showErrorText, showEmptySearchText } from "./searchResults.js";
+import { removeAllResults, buildResultItems, clearStatsText, updateStatsText, showErrorText, showEmptySearchText, showLoadingText } from "./searchResults.js";
 import { getSearchTerm, fetchSearchResults } from "./dataFunctions.js";
 
 document.addEventListener("readystatechange", (event) => {
@@ -9,6 +9,8 @@ document.addEventListener("readystatechange", (event) => {
         initApp();
     }
 });
+
+let activeController = null;
 
 /* Initialize App */
 
@@ -41,11 +43,28 @@ const runSearch = async () => {
         showEmptySearchText();
         return;
     }
-    const results = await fetchSearchResults(searchTerm);
-    if (results === null) {
-        showErrorText();
-        return;
+
+    if (activeController) activeController.abort();
+    const controller = new AbortController();
+    activeController = controller;
+
+    showLoadingText();
+
+    try {
+        const results = await fetchSearchResults(searchTerm, controller.signal);
+        if (results === null) {
+            showErrorText();
+            return;
+        }
+        if (results.length) buildResultItems(results);
+        updateStatsText(results.length);
+    } catch (error) {
+        if (error.name !== "AbortError") {
+            showErrorText();
+        }
+    } finally {
+        if (activeController === controller) {
+            activeController = null;
+        }
     }
-    if (results.length) buildResultItems(results);
-    updateStatsText(results.length);
 };

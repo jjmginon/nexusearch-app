@@ -6,9 +6,9 @@ export const getSearchTerm = () => {
     return normalized;
 };
 
-export const fetchSearchResults = async (searchTerm) => {
+export const fetchSearchResults = async (searchTerm, signal) => {
     const apiUrl = buildApiUrl(searchTerm);
-    const rawData = await requestData(apiUrl);
+    const rawData = await requestData(apiUrl, signal);
     if (rawData === null) return null;
     if (rawData?.query) {
         return parseWikiResults(rawData.query.pages);
@@ -41,12 +41,13 @@ const getExcerptLength = () => {
     return 160;
 };
 
-const requestData = async (url) => {
+const requestData = async (url, signal) => {
     try {
-        const response = await fetch(url);
+        const response = await fetch(url, { signal });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         return await response.json();
     } catch (error) {
+        if (error.name === "AbortError") throw error;
         console.error("NexuSearch fetch error:", error);
         return null;
     }
