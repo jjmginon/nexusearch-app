@@ -54,7 +54,7 @@ nexusearch-app/
 ## ✨ Highlights
 
 - **Accessibility‑first design**  
-  Screen‑reader labels, ARIA‑friendly roles, focus states, and semantic structure.
+  Screen‑reader labels, ARIA‑friendly roles, focus states, semantic structure, and keyboard support for clearing a search (Escape key).
 
 - **Responsive layout**  
   SCSS mixins for breakpoints, adaptive widths, and fluid typography.
@@ -63,7 +63,10 @@ nexusearch-app/
   Cold‑tech palette, cyan glow accents, geometric corner cuts, and scanline overlays.
 
 - **Dynamic search experience**  
-  Wikipedia API integration, lazy‑loaded thumbnails, and real‑time stats feedback.
+  Wikipedia API integration with lazy‑loaded thumbnails and real‑time stats feedback.
+
+- **Resilient request handling**
+  Clear feedback for every search state, with outdated requests cancelled automatically.
 
 ---
 
